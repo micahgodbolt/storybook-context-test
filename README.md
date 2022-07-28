@@ -4,4 +4,11 @@ In storybook 6.4 changes to global variables would cause re-renders across the e
 
 Upgrade to 6.5, then run again
 
-In 6.5 those changes only occur in the stories themselves. Run this code locally, notice how the checkbox (controlled) changes when clicked, along with the 'foo' values. In 6.5 the checkbox will change the story value to 'false' but won't change again due to the 'checked' value not having changed in the page template.
+In 6.5 those changes only occur in the stories themselves. 
+
+Repro:
+
+1. run `yarn storybook`
+2. navigate to Button/Primary and click on "Docs page"
+3. Click on "click" button
+4. Note that foo increases in the story, but does not increase in the docs container until you navigate to canvas and back

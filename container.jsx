@@ -7,23 +7,23 @@ import addons from "@storybook/addons";
  */
 export const Container = ({ children, context }) => {
   const channel = addons.getChannel();
-  const toggleFoo = (e) => {
+  const [value, updateValue] = React.useState(1);
+  const handleClick = (e) => {
+    updateValue(value + 1);
     channel.emit("updateGlobals", {
-      globals: { foo: e.currentTarget.checked },
+      globals: { foo: value },
     });
   };
 
   return (
     <DocsContainer context={context}>
-      <div>Foo is: {context.globals.foo ? "true" : "false"}</div>
+      <div>Foo is: {context.globals.foo}</div>
       <div>
         <label>
-          Toggle Foo
-          <input
-            checked={context.globals.foo}
-            onChange={toggleFoo}
-            type="checkbox"
-          />
+          Increase Foo
+          <button style={{ marginLeft: 10 }} onClick={handleClick}>
+            click
+          </button>
         </label>
       </div>
       {children}

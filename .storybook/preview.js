@@ -16,9 +16,9 @@ export const parameters = {
 export const decorators = [
   (Story, context) => (
     <div style={{ margin: '3em' }}>
-      Foo is: {context.globals.foo ? 'true' : 'false'}
+      Foo is: {context.globals.foo} <br />
       <Story />
-    </div>
+    </div >
   ),
 ];
 
@@ -28,6 +28,6 @@ export const globalTypes = {
   foo: {
     name: 'foo',
     description: 'Global theme for components',
-    defaultValue: 'true',
+    defaultValue: 1,
   },
 };
