@@ -10,14 +10,20 @@ export const Container = ({ children, context }) => {
   const [value, updateValue] = React.useState(1);
   const handleClick = (e) => {
     updateValue(value + 1);
+    console.log(value)
     channel.emit("updateGlobals", {
       globals: { foo: value },
     });
   };
 
+  const story = context.storyById(context.id);
+  const { globals } = context.getStoryContext(story);
+  console.log(globals)
+
+  
   return (
     <DocsContainer context={context}>
-      <div>Foo is: {context.globals.foo}</div>
+      <div>Foo is: {globals.foo}</div>
       <div>
         <label>
           Increase Foo
